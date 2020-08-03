@@ -22,4 +22,5 @@ const client = new Discord.Client();
 client.login(process.env.DC_TOKEN);
 
 console.log('Connecting to Discord..');
-client.on('ready', () => {console.log('Connected')});
+
+client.on('ready', () => console.log('Connecting to Discord successful!'));
