@@ -1,4 +1,4 @@
-const dotenv = require('dotenv');
+import * as dotenv from 'dotenv';
 
 const res = dotenv.config();
 
@@ -17,10 +17,22 @@ const firebaseConfig = {
 };
 const discordToken = process.env.DC_TOKEN;
 
-const Discord = require('discord.js');
+import * as Discord from 'discord.js'
+import { _status } from './commands/status';
 const client = new Discord.Client();
 client.login(process.env.DC_TOKEN);
 
 console.log('Connecting to Discord..');
 
 client.on('ready', () => console.log('Connecting to Discord successful!'));
+
+client.on('message', (message: Discord.Message) => {
+  if (client.user !== null) {
+    if (message.mentions.has(client.user)) {
+      _status(message);
+    }
+  }
+  if (message.content.startsWith('.gr')) {
+    console.log('Command called')
+  }
+})

@@ -22,4 +22,3 @@ The preset callsign for this bot will be `.gr`
 
 - `advertiseEvent` || `ae` (eventId: number, channel: string | channelRef)
   Advertise an event in a provided channel.
-
