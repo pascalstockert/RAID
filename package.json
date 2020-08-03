@@ -1,0 +1,15 @@
+{
+  "name": "raid",
+  "version": "0.0.1",
+  "description": "RAID bot initially crafted for GW2 raid planning.",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Pascal Stockert",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^12.2.0",
+    "dotenv": "^8.2.0"
+  }
+}
