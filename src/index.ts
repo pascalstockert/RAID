@@ -19,7 +19,7 @@ const discordToken = process.env.DC_TOKEN;
 
 import * as Discord from 'discord.js'
 import { _status } from './commands/status';
-import { sendMessage, concat } from './helpers';
+import { commandFinder, commandHandler } from './commands/_command-handler';
 const client = new Discord.Client();
 client.login(process.env.DC_TOKEN);
 
@@ -28,12 +28,17 @@ console.log('Connecting to Discord..');
 client.on('ready', () => console.log('Connecting to Discord successful!'));
 
 client.on('message', (message: Discord.Message) => {
-  if (client.user !== null) {
-    if (message.mentions.has(client.user)) {
-      _status(message);
-    }
+  if (client.user === null || message.author.bot) {
+    return;
   }
+  
+  if (message.mentions.has(client.user)) {
+    _status(message);
+  }
+  
   if (message.content.startsWith('.gr')) {
-    sendMessage(message.channel, concat(' ', 'Executed command', message.content));
+    const commandString = message.content.split('.gr ')[1];
+    const commandCallback = commandFinder(commandString);
+    commandHandler(commandCallback, message);
   }
-})
+});
