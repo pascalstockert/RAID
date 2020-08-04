@@ -19,6 +19,7 @@ const discordToken = process.env.DC_TOKEN;
 
 import * as Discord from 'discord.js'
 import { _status } from './commands/status';
+import { sendMessage, concat } from './helpers';
 const client = new Discord.Client();
 client.login(process.env.DC_TOKEN);
 
@@ -33,6 +34,6 @@ client.on('message', (message: Discord.Message) => {
     }
   }
   if (message.content.startsWith('.gr')) {
-    console.log('Command called')
+    sendMessage(message.channel, concat(' ', 'Executed command', message.content));
   }
 })
