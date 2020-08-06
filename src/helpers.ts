@@ -17,6 +17,6 @@ export const concat = (separator: string, ...strings: Array<string>): string => 
 /* D.JS helper functions */
 import { Message, TextChannel, DMChannel, NewsChannel } from "discord.js";
 
-export const sendMessage = (channel: TextChannel | DMChannel | NewsChannel, message: string): Promise<Message | Array<Message>> => {
+export const sendMessage = (channel: (TextChannel | DMChannel | NewsChannel), message: string): Promise<Message | Array<Message>> => {
   return channel.send(message);
 };
