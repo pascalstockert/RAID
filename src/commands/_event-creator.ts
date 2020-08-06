@@ -1,19 +1,11 @@
 import { Message, User } from "discord.js";
 import { sendMessage } from "../helpers";
+import { Event } from "../classes/event.class";
 
 export const _createEvent = async (message: Message) => {
   const newEvent = await workQuestionStack(message);
   console.log(newEvent);
 };
-
-class Event {
-  uid: string = '';
-  title: string = '';
-  subTitle: string = '';
-  datetime: number = new Date().getTime();
-  reminders: number[] | undefined;
-  roleMentions: string | undefined;
-}
 
 const questionStack = [
   {
